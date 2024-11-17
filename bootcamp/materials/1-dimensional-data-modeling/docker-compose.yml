@@ -18,5 +18,21 @@ services:
       - ./scripts/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
       - postgres-data:/var/lib/postgresql/data
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "8888:80"
+    env_file:
+      - .env
+      - example.env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${POSTGRES_ADMIN}
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
 volumes:
   postgres-data:
+  pgadmin-data:
