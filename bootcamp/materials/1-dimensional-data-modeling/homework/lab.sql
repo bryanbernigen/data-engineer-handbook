@@ -260,3 +260,203 @@ SELECT *, 2002 AS current_season FROM (
     SELECT *
     FROM new_records
 ) AS res
+
+
+
+
+CREATE TYPE vertex_type
+    AS ENUM('player', 'team', 'game');
+
+
+CREATE TABLE vertices (
+    identifier TEXT,
+    type vertex_type,
+    properties JSON,
+    PRIMARY KEY (identifier, type)
+);
+
+CREATE TYPE edge_type AS
+    ENUM ('plays_against',
+          'shares_team',
+          'plays_in',
+          'plays_on'
+        );
+
+CREATE TABLE edges (
+    subject_identifier TEXT,
+    subject_type vertex_type,
+    object_identifier TEXT,
+    object_type vertex_type,
+    edge_type edge_type,
+    properties JSON,
+    PRIMARY KEY (subject_identifier,
+                subject_type,
+                object_identifier,
+                object_type,
+                edge_type)
+);
+
+INSERT INTO vertices
+SELECT
+    game_id AS identifier,
+    'game'::vertex_type AS type,
+    json_build_object
+    (
+        'pts_home', pts_home,
+        'pts_away', pts_away,
+        'winning_team_',
+            CASE WHEN home_team_wins = 1 THEN home_team_id
+                ELSE visitor_team_id
+            END
+    ) AS  properties
+FROM games;
+
+
+WITH players_agg AS(
+    SELECT
+        player_id AS identifier,
+        MAX(player_name) AS player_name,
+        COUNT(1) AS number_of_games,
+        SUM(pts) AS total_points,
+        ARRAY_AGG(DISTINCT team_abbreviation) AS teams
+    FROM
+        game_details
+    GROUP BY
+        player_id
+)
+INSERT INTO vertices
+SELECT
+    identifier,
+    'player'::vertex_type AS type,
+    json_build_object
+    (
+        'player_name', player_name,
+        'number_of_games', number_of_games,
+        'total_points', total_points,
+        'teams', teams
+    ) AS properties
+FROM players_agg;
+
+
+WITH teams_deduped AS (
+    SELECT *, ROW_NUMBER() OVER(PARTITION BY team_id) as row_num
+    FROM teams
+)
+INSERT INTO vertices
+SELECT
+       team_id AS identifier,
+    'team'::vertex_type AS type,
+    json_build_object(
+        'abbreviation', abbreviation,
+        'nickname', nickname,
+        'city', city,
+        'arena', arena,
+        'year_founded', yearfounded
+        )
+FROM teams_deduped
+WHERE row_num = 1;
+
+
+INSERT INTO edges
+SELECT
+    player_id AS subject_identifier,
+    'player'::vertex_type as subject_type,
+    game_id AS object_identifier,
+    'game'::vertex_type as object_type,
+    'plays_in'::edge_type as edge_type,
+    json_build_object(
+        'start_posistion', start_position,
+        'pts', pts,
+        'team_id', team_id,
+        'team_abbreviation', team_abbreviation
+    ) as properties
+FROM
+    game_details;
+
+
+INSERT INTO edges
+WITH aggregated_players AS
+(
+    SELECT
+        f1.player_id AS left_player_id,
+        f2.player_id AS right_player_id,
+        CASE WHEN f1.team_abbreviation = f2.team_abbreviation
+            THEN 'shares_team'::edge_type
+            ELSE 'plays_against'::edge_type
+        END as edge_type,
+        MAX(f1.player_name) AS left_player_name,
+        MAX(f2.player_name) AS right_player_name,
+        COUNT (*) AS num_games,
+        SUM(f1.pts) AS left_points,
+        SUM(f2.pts) AS right_points
+    FROM game_details AS f1
+        JOIN game_details AS f2
+            ON f1.game_id = f2.game_id
+            AND f1.player_name <> f2.player_name
+    WHERE
+        f1.player_id > f2.player_id
+    GROUP BY
+        f1.player_id,
+        f2.player_id,
+        CASE WHEN f1.team_abbreviation = f2.team_abbreviation
+            THEN 'shares_team'::edge_type
+            ELSE 'plays_against'::edge_type
+        END
+)
+SELECT
+    left_player_id AS subject_identifier,
+    'player'::vertex_type as subject_type,
+    right_player_id AS object_identifier,
+    'player'::vertex_type as object_type,
+    edge_type as edge_type,
+    json_build_object(
+        'num_games', num_games,
+        'subject_points', left_points,
+        'object_points', right_points
+    ) as properties
+FROM aggregated_players
+
+
+SELECT
+    v1.properties->>'player_name' AS player_1_name,
+    v2.properties->>'player_name' AS player_2_name,
+    (
+        CAST(v1.properties->>'total_points' AS REAL)/
+        CASE WHEN v1.properties->>'number_of_games' = '0' 
+            THEN 1 
+            ELSE CAST(v1.properties->>'number_of_games' AS REAL) 
+        END
+    ) AS player_1_normal_ppg,
+    (
+        CAST(v2.properties->>'total_points' AS REAL)/
+        CASE WHEN v2.properties->>'number_of_games' = '0' 
+            THEN 1 
+            ELSE CAST(v1.properties->>'number_of_games' AS REAL) 
+        END
+    ) AS player_2_normal_ppg,
+    (
+        CAST(e.properties->>'subject_points' AS REAL)/
+        CASE WHEN e.properties->>'num_games' = '0'
+            THEN 1
+            ELSE CAST(e.properties->>'num_games' AS REAL) 
+        END
+    ) AS player_1_ppg_against_player_2,
+    (
+        CAST(e.properties->>'object_points' AS REAL)/
+        CASE WHEN e.properties->>'num_games' = '0'
+            THEN 1
+            ELSE CAST(e.properties->>'num_games' AS REAL) 
+        END
+    ) AS player_2_ppg_against_player_1
+FROM vertices v1 
+    JOIN edges e
+        ON v1.identifier = e.subject_identifier
+            AND v1.type = e.subject_type
+            AND e.edge_type = 'plays_against'
+    JOIN vertices v2
+        ON e.object_identifier = v2.identifier
+            AND e.object_type = v2.type
+WHERE
+    v1.type = 'player'
+    AND v1.identifier = '1629029'
+LIMIT 10;
