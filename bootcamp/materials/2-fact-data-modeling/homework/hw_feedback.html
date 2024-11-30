@@ -1,0 +1,109 @@
+
+<div>
+    <h1>FINAL GRADE: A</h1>
+  <p>Hello,</p>
+<p>Great work on your submission! I'll review each of the SQL scripts you'v=
+e submitted and give feedback based on the requirements:</p>
+<ol>
+<li><strong>De-duplication Query (File: 1.sql)</strong>:</li>
+</ol>
+<ul>
+<li>Your implementation correctly uses <code>ROW_NUMBER()</code> to identif=
+y duplicates based on the <code>game_id</code> and <code>player_id</code>, =
+and then filters to keep only the first row. However, make sure to include =
+<code>team_id</code> in the <code>PARTITION BY</code> clause if the require=
+ment specifies it should be considered for deduplication.</li>
+<li>Well done on correctly selecting and returning deduplicated results.</l=
+i>
+</ul>
+<ol>
+<li><strong>User Devices Activity Datelist DDL (File: 2.sql)</strong>:</li>
+</ol>
+<ul>
+<li>Your table definition for <code>user_devices_cumulated</code> is accura=
+te, with the <code>device_activity_datelist</code> being stored as an array=
+of dates. The primary key timing is appropriate.</li>
+</ul>
+<ol>
+<li><strong>User Devices Activity Datelist Implementation (File: 3.sql)</st=
+rong>:</li>
+</ol>
+<ul>
+<li>Your query for incrementally populating <code>user_devices_cumulated</c=
+ode> is well-structured, properly combining data from yesterday and today. =
+Ensure to handle any edge cases, such as missing data on certain days, to p=
+revent breaking the cumulative update.</li>
+</ul>
+<ol>
+<li><strong>User Devices Activity Int Datelist (File: 4.sql)</strong>:</li>
+</ol>
+<ul>
+<li>The script uses <code>UNNEST</code> and bit manipulation to convert dat=
+e lists into an integer, which aligns with the requirement. However, ensure=
+that date calculations and transformations accurately reflect your dataset=
+'s time range and indices.</li>
+<li>Comments explaining the steps would make understanding easier.</li>
+</ul>
+<ol>
+<li><strong>Host Activity Datelist DDL (File: 5.sql)</strong>:</li>
+</ol>
+<ul>
+<li>The <code>hosts_cumulated</code> table's structure aligns well with the=
+requirements, including the setup for an array-based date list and primary=
+keys.</li>
+</ul>
+<ol>
+<li><strong>Host Activity Datelist Implementation (File: 6.sql)</strong>:</=
+li>
+</ol>
+<ul>
+<li>Similar to the previous cumulative queries, you correctly gather previo=
+us and current host activities before updating the data. The handling of ne=
+w and updated hosts looks accurate.</li>
+</ul>
+<ol>
+<li><strong>Reduced Host Fact Array DDL (File: 7.sql)</strong>:</li>
+</ol>
+<ul>
+<li>Your <code>host_activity_reduced</code> table schema is consistent with=
+the expected format, capturing the <code>hit_array</code> and <code>unique=
+_visitors</code> arrays as intended with a unique primary key for host and =
+month.</li>
+</ul>
+<ol>
+<li><strong>Reduced Host Fact Array Implementation (File: 8.sql)</strong>:<=
+/li>
+</ol>
+<ul>
+<li>The function inserts or updates data correctly using arrays to track hi=
+ts and unique visitors. The logic for updating hosts' information looks rob=
+ust.</li>
+<li>The loop that drives the date range is a good approach for this computa=
+tion.</li>
+</ul>
+<p><strong>Overall Assessment</strong>:</p>
+<ul>
+<li>Your solutions are well-organized and generally meet the necessary requ=
+irements. Consider adding more extensive comments to more complex parts of =
+your code for easier maintenance and understandability.</li>
+<li>Ensure that all partitioning and join logic aligns precisely with the r=
+equirements, particularly regarding key groupings.</li>
+</ul>
+<p>FINAL GRADE:</p>
+<pre><code class=3D"json language-json">{
+"letter_grade": "A",
+"passes": true
+}
+</code></pre>
+<p>Well done on a strong submission! If there are any specific areas you'd =
+like further clarification on, feel free to ask. Keep up the good work!</p>
+  </div><img src=3D"http://url3905.techcreator.io/wf/open?u=
+pn=3Du001.vTSUcvKYFXxkWK2GAzJdRR-2FrOkTjBTH8dkbgQ5H1pnce2U2pETeCOFHrYJM0gy7=
+vc1XtTJ8tWK-2BBcFhULjJ69CxZKeKmybSc-2FQK39280wKJYPwzxnd0Yc7uJZDZxE-2F9D3tTY=
+EatoFvAeuuMFYLhVW-2FF4psMe-2FeN9rmuY8NcP-2FvyZeDcGo7w3DsjF3oav86uKEzYTcPgKn=
+KCLIBabhJLATzL-2Bi3wyqzd6KGmrPonAW3A-3D" alt=3D"" width=3D"1" height=3D"1" =
+border=3D"0" style=3D"height:1px !important;width:1px !important;border-wid=
+th:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-r=
+ight:0 !important;margin-left:0 !important;padding-top:0 !important;padding=
+-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;"=
+/>

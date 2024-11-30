@@ -1,0 +1,34 @@
+Hello,
+
+Great work on your submission! I'll review each of the SQL scripts you've submitted and give feedback based on the requirements:
+
+De-duplication Query (File: 1.sql):
+Your implementation correctly uses ROW_NUMBER() to identify duplicates based on the game_id and player_id, and then filters to keep only the first row. However, make sure to include team_id in the PARTITION BY clause if the requirement specifies it should be considered for deduplication.
+Well done on correctly selecting and returning deduplicated results.
+User Devices Activity Datelist DDL (File: 2.sql):
+Your table definition for user_devices_cumulated is accurate, with the device_activity_datelist being stored as an array of dates. The primary key timing is appropriate.
+User Devices Activity Datelist Implementation (File: 3.sql):
+Your query for incrementally populating user_devices_cumulated is well-structured, properly combining data from yesterday and today. Ensure to handle any edge cases, such as missing data on certain days, to prevent breaking the cumulative update.
+User Devices Activity Int Datelist (File: 4.sql):
+The script uses UNNEST and bit manipulation to convert date lists into an integer, which aligns with the requirement. However, ensure that date calculations and transformations accurately reflect your dataset's time range and indices.
+Comments explaining the steps would make understanding easier.
+Host Activity Datelist DDL (File: 5.sql):
+The hosts_cumulated table's structure aligns well with the requirements, including the setup for an array-based date list and primary keys.
+Host Activity Datelist Implementation (File: 6.sql):
+Similar to the previous cumulative queries, you correctly gather previous and current host activities before updating the data. The handling of new and updated hosts looks accurate.
+Reduced Host Fact Array DDL (File: 7.sql):
+Your host_activity_reduced table schema is consistent with the expected format, capturing the hit_array and unique_visitors arrays as intended with a unique primary key for host and month.
+Reduced Host Fact Array Implementation (File: 8.sql):
+The function inserts or updates data correctly using arrays to track hits and unique visitors. The logic for updating hosts' information looks robust.
+The loop that drives the date range is a good approach for this computation.
+Overall Assessment:
+
+Your solutions are well-organized and generally meet the necessary requirements. Consider adding more extensive comments to more complex parts of your code for easier maintenance and understandability.
+Ensure that all partitioning and join logic aligns precisely with the requirements, particularly regarding key groupings.
+FINAL GRADE:
+
+{
+  "letter_grade": "A",
+  "passes": true
+}
+Well done on a strong submission! If there are any specific areas you'd like further clarification on, feel free to ask. Keep up the good work!
