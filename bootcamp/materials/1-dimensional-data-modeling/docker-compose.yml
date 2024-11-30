@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:14
-    restart: on-failure
+    restart: no
     container_name: ${DOCKER_CONTAINER}
     env_file:
       - .env
@@ -20,7 +20,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
-    restart: always
+    restart: no
     ports:
       - "8888:80"
     env_file:
