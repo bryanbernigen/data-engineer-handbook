@@ -1,0 +1,59 @@
+<body><div class="bodycontainer"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr height="14px"><td width="143"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_server_1x.png" width="143" height="59" alt="Gmail" class="logo"></td><td align="right"><font size="-1" color="#777"><b>Bryan Bernigen &lt;bryanbernigen@gmail.com&gt;</b></font></td></tr></tbody></table><hr><div class="maincontent"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td><font size="+1"><b>Grade for homework: Apache Spark Homework Submission</b></font><br></td></tr></tbody></table><hr><table width="100%" cellpadding="0" cellspacing="0" border="0" class="message"><tbody><tr><td><font size="-1"><b>bootcamp@techcreator.io </b>&lt;bootcamp@techcreator.io&gt;</font></td><td align="right"><font size="-1">Sun, Dec 8, 2024 at 6:26 PM</font></td></tr><tr><td colspan="2" style="padding-bottom: 4px;"><font size="-1" class="recipient"><div>To: bryanbernigen@gmail.com</div></font></td></tr><tr><td colspan="2"><table width="100%" cellpadding="12" cellspacing="0" border="0"><tbody><tr><td><div style="overflow: hidden;"><font size="-1"><div><font color="#550055">
+    <h1>FINAL GRADE: B</h1>
+    <p>** This feedback is auto-generated from an LLM **</p>
+    </font><p>Here's the feedback for your submission:</p>
+    <ol>
+    <li><strong>Disabling Broadcast Joins (<code>query_1</code>)</strong>:</li>
+    </ol>
+    <ul>
+    <li>You correctly disabled the default behavior for broadcast joins using <code>spark.conf.set("spark.sql.<wbr>autoBroadcastJoinThreshold", "-1")</code>. Well done.</li>
+    </ul>
+    <ol>
+    <li><strong>Explicitly Broadcasting Joins (<code>query_2</code>)</strong>:</li>
+    </ol>
+    <ul>
+    <li>You used <code>broadcast()</code> to explicitly join the <code>medals</code> and <code>maps</code> tables. This is properly implemented in your join operations.</li>
+    </ul>
+    <ol>
+    <li><strong>Bucket Join (<code>query_3</code>)</strong>:</li>
+    </ol>
+    <ul>
+    <li>You correctly bucketed the <code>match_details</code>, <code>matches</code>, and <code>medals_matches_players</code> on <code>match_id</code> with 16 buckets. This should help with efficient joins.</li>
+    </ul>
+    <ol>
+    <li><strong>Aggregation Queries (<code>query_4</code>)</strong>:</li>
+    </ol>
+    <ul>
+    <li><strong>Query 4a:</strong> The SQL query effectively computes which player has the highest average kills per game. Correctly used aggregated functions to achieve this.</li>
+    <li><strong>Query 4b:</strong> Rightly identifies the most played playlist using aggregation functions.</li>
+    <li><strong>Query 4c:</strong> Your SQL correctly identifies the most played map, but there's an unused broadcast hint left in the SQL—this should be cleaned up as it's not necessary in this context.</li>
+    <li><strong>Query 4d:</strong> The query is constructed to find the map with the most "KillingSpree" medals. The use of DISTINCT on <code>match_id</code> may not be intended because you want total medals rather than distinct matches. It would benefit from clarification of intent.</li>
+    </ul>
+    <ol>
+    <li><strong>Optimizing Data Size (<code>query_5</code>)</strong>:</li>
+    </ol>
+    <ul>
+    <li>You explored different sort patterns using <code>.sortWithinPartitions</code>, which is a good approach to minimize data size. However, there’s an inconsistency with the table paths specified in your code for storing the sizes for comparison. Make sure to use accurate table paths like <code>bootcamp</code> as initialized.</li>
+    </ul>
+    <ol>
+    <li><strong>General SQL Practices and PySpark Operations</strong>:</li>
+    </ol>
+    <ul>
+    <li>Overall, the join and aggregation methods mostly align with PySpark best practices. Pay attention to cleaning up code such as removing ineffective hints or clearly documenting intentions. Furthermore, the last approach to determine the file sizes from the sorted tables needs verifying table paths.</li>
+    </ul>
+    <h3 id="m_1064912842674234692additionalsuggestions">Additional Suggestions:</h3>
+    <ul>
+    <li>Verify the correct SQL table paths in your file size computation to ensure visibility of results.</li>
+    <li>Consider revisiting the use of distinct inside the aggregation for query 4d, and double-check that the approach aligns with the goal.</li>
+    </ul>
+    <h3 id="m_1064912842674234692finalevaluationinjsonformat">Final Evaluation in JSON Format:</h3><font color="#550055">
+    <pre><code>{
+      "letter_grade": "B",
+      "passes": true
+    }
+    </code></pre>
+    </font><p>Overall, you showcased a solid grasp of the material and delivered functional answers to most of the queries. Address the issues mentioned, especially regarding path configurations and SQL query cleanup, for a more precise and optimal submission.</p>
+    </div><img src="https://ci3.googleusercontent.com/meips/ADKq_Nan5yEtk0sF8T4gelmesw-U9RW-Qu7C1WzV_DQ0Ly44u3tkuC92BbxVpnrAr37tOPJan503BM7WTCw1r0PqzIhu6BrQ-MmYzrCO4Ev3sIvUBWzqzV0jqkce701vx1BS7zVlqJO1wNDCENVP2XqZiSYaX843mlq9qsJy9hzK5rzAaGHnrBCu2GSMo7SVIY0yElfk1obRFODfsRL75e1bQgZlkPGMbrrjmixJPrGAT8PT573eXkmWBHewQnVapq78UC-fWaHVsSnDoH3QqkQgO-VsVE6FI-h7itfCem1n7fVsTF7KK9c3tRzJ3gqLoF9GUIePQ62d2JEzPYWDj6wrdKRH0y34wMncBvX8kodCrtccLvbimX6B-XQZ2k-IfROua4WEDzz-8sySQ-7OVOnYxwDIjYTnUpjPdHsDpU6un-Pw6MoejKyh=s0-d-e1-ft#http://url3905.techcreator.io/wf/open?upn=u001.vTSUcvKYFXxkWK2GAzJdRR-2FrOkTjBTH8dkbgQ5H1pncffCGsrfKamwkvpU0bx9Sb74W-2B-2B22XmclqtQO7j-2FIhnI0nqrYTGDXpdtN-2BH0kZhgrpDk-2FE3gMclfSOidfBUKqTp7u7uuyqYW8V8DVHnGhCR256uooMk-2BXEPk1XK4SwIPRKsrjbuYicysYL190WWJyByu-2FzQDQosRIQxTea3Vt8r66K2nf94ZN58gEGEYF6-2Bd4-3D" alt="" width="1" height="1" border="0" style="height:1px!important;width:1px!important;border-width:0!important;margin-top:0!important;margin-bottom:0!important;margin-right:0!important;margin-left:0!important;padding-top:0!important;padding-bottom:0!important;padding-right:0!important;padding-left:0!important">
+    </font></div></td></tr></tbody></table></td></tr></tbody></table></div></div><script type="text/javascript" nonce="">// <![CDATA[
+};
+    // ]]></script></body>

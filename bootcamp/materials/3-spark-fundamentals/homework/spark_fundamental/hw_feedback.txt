@@ -1,0 +1,26 @@
+Here's the feedback for your submission:
+
+Disabling Broadcast Joins (query_1):
+You correctly disabled the default behavior for broadcast joins using spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1"). Well done.
+Explicitly Broadcasting Joins (query_2):
+You used broadcast() to explicitly join the medals and maps tables. This is properly implemented in your join operations.
+Bucket Join (query_3):
+You correctly bucketed the match_details, matches, and medals_matches_players on match_id with 16 buckets. This should help with efficient joins.
+Aggregation Queries (query_4):
+Query 4a: The SQL query effectively computes which player has the highest average kills per game. Correctly used aggregated functions to achieve this.
+Query 4b: Rightly identifies the most played playlist using aggregation functions.
+Query 4c: Your SQL correctly identifies the most played map, but there's an unused broadcast hint left in the SQL—this should be cleaned up as it's not necessary in this context.
+Query 4d: The query is constructed to find the map with the most "KillingSpree" medals. The use of DISTINCT on match_id may not be intended because you want total medals rather than distinct matches. It would benefit from clarification of intent.
+Optimizing Data Size (query_5):
+You explored different sort patterns using .sortWithinPartitions, which is a good approach to minimize data size. However, there’s an inconsistency with the table paths specified in your code for storing the sizes for comparison. Make sure to use accurate table paths like bootcamp as initialized.
+General SQL Practices and PySpark Operations:
+Overall, the join and aggregation methods mostly align with PySpark best practices. Pay attention to cleaning up code such as removing ineffective hints or clearly documenting intentions. Furthermore, the last approach to determine the file sizes from the sorted tables needs verifying table paths.
+Additional Suggestions:
+Verify the correct SQL table paths in your file size computation to ensure visibility of results.
+Consider revisiting the use of distinct inside the aggregation for query 4d, and double-check that the approach aligns with the goal.
+Final Evaluation in JSON Format:
+{
+  "letter_grade": "B",
+  "passes": true
+}
+Overall, you showcased a solid grasp of the material and delivered functional answers to most of the queries. Address the issues mentioned, especially regarding path configurations and SQL query cleanup, for a more precise and optimal submission
