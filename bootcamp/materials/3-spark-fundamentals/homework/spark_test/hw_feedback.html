@@ -1,0 +1,72 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css" nonce="">
+    body,td,div,p,a,input {font-family: arial, sans-serif;}
+    </style><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="shortcut icon" href="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" type="image/x-icon"><title>Gmail - Grade for homework: Apache Spark Data Quality Homework Submission</title><style type="text/css" nonce="">
+    body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none} a:hover {text-decoration:underline; cursor: pointer} a:visited{color:##6611CC} img{border:0px} pre { white-space: pre; white-space: -moz-pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; max-width: 800px; overflow: auto;} .logo { left: -7px; position: relative; }
+    </style></head><body><div class="bodycontainer"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr height="14px"><td width="143"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_server_1x.png" width="143" height="59" alt="Gmail" class="logo"></td><td align="right"><font size="-1" color="#777"><b>Bryan Bernigen &lt;bryanbernigen@gmail.com&gt;</b></font></td></tr></tbody></table><hr><div class="maincontent"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td><font size="+1"><b>Grade for homework: Apache Spark Data Quality Homework Submission</b></font><br></td></tr></tbody></table><hr><table width="100%" cellpadding="0" cellspacing="0" border="0" class="message"><tbody><tr><td><font size="-1"><b>bootcamp@techcreator.io </b>&lt;bootcamp@techcreator.io&gt;</font></td><td align="right"><font size="-1">Sun, Dec 8, 2024 at 8:30 PM</font></td></tr><tr><td colspan="2" style="padding-bottom: 4px;"><font size="-1" class="recipient"><div>To: bryanbernigen@gmail.com</div></font></td></tr><tr><td colspan="2"><table width="100%" cellpadding="12" cellspacing="0" border="0"><tbody><tr><td><div style="overflow: hidden;"><font size="-1"><div>
+    <h1>FINAL GRADE: A</h1><font color="#550055">
+    <p>** This feedback is auto-generated from an LLM **</p>
+    </font><p>Dear Student,</p>
+    <p>Thank you for your submission. I have reviewed your work based on the requirements specified in the assignment. Below is the detailed feedback on each component:</p>
+    <h3 id="m_-8082390347236304276backfillqueryconversion">Backfill Query Conversion:</h3>
+    <ol>
+    <li><strong>Queries in SparkSQL:</strong></li>
+    </ol>
+    <ul>
+    <li>You have effectively used SparkSQL with appropriate CTEs (<code>WITH</code>) for transforming data in both <code>device_activity_datelist</code> and <code>host_cummulated</code> jobs.</li>
+    <li>There are references to tables and proper casting of dates, which is good.</li>
+    </ul>
+    <h3 id="m_-8082390347236304276pysparkjob">PySpark Job:</h3>
+    <ol>
+    <li><strong>Device Activity Datelist Transformation:</strong></li>
+    </ol>
+    <ul>
+    <li>The <code>do_device_activity_datelist_<wbr>transform</code> function correctly implements the logic using SparkSQL. The usage of <code>FULL OUTER JOIN</code> and <code>ARRAY_UNION</code> shows your understanding of handling Slowly Changing Dimensions and array operations.</li>
+    <li>The job correctly handles the transformation and writes the output as expected.</li>
+    </ul>
+    <ol>
+    <li><strong>Host Cumulative Transformation:</strong></li>
+    </ol>
+    <ul>
+    <li>The <code>do_host_cummulated_transform</code> function is well implemented with logical separation of updated and new hosts. It handles cumulative host data accurately.</li>
+    </ul>
+    <ol>
+    <li><strong>Setup:</strong></li>
+    </ol>
+    <ul>
+    <li>The provided main functions execute the transformations and write the output effectively.</li>
+    </ul>
+    <h3 id="m_-8082390347236304276tests">Tests:</h3>
+    <ol>
+    <li><strong>Test for Device Activity Datelist:</strong></li>
+    </ol>
+    <ul>
+    <li>The test cases are well-structured. You've used <code>chispa</code> for DataFrame comparison, which correctly validates the transformation.</li>
+    <li>You have considered both initial and cumulative scenarios in your tests, which provides confidence in the robustness of your transformation logic.</li>
+    </ul>
+    <ol>
+    <li><strong>Test for Host Cummulated:</strong></li>
+    </ol>
+    <ul>
+    <li>As with the device tests, the host tests are also set up to cover initial and cumulative scenarios efficiently.</li>
+    <li>Your use of mock data with <code>namedtuple</code> is an effective approach for simplicity and readability.</li>
+    </ul>
+    <h3 id="m_-8082390347236304276areasofimprovement">Areas of Improvement:</h3>
+    <ul>
+    <li>Ensure the usage of consistent date and time formats (in the events data, you use <code>event_time</code> as both strings and dates).</li>
+    <li>Although not explicitly asked, consider adding inline comments in the code to clarify complex logic for future maintainability.</li>
+    </ul>
+    <h3 id="m_-8082390347236304276finalcomments">Final Comments:</h3>
+    <p>Overall, you have demonstrated a solid understanding of PySpark and SparkSQL transformations. The work adheres to best practices for transformation logic and testing, making it a well-rounded submission.</p>
+    <h3 id="m_-8082390347236304276finalgrade">FINAL GRADE:</h3>
+    <pre><code>{
+      "letter_grade": "A",
+      "passes": true
+    }
+    </code></pre>
+    <p>Congratulations on your excellent work. Keep up the great efforts in your future assignments.</p>
+    <p>Best regards,
+    [Your Name]</p>
+    </div><img src="https://ci3.googleusercontent.com/meips/ADKq_NYFbWrDDHQG7oOmej6BcgqDp6JGLOCqbIh_7v0-T7aRA4S89upyyYn7cP2ndXb1v5zdh7QE015CQ2UE_nATpCDCGFve1cXpecIyF5WOEvWay9vxqThvtNqpM6Tvipy-VrBfSBKUxLWdz3YfqwnFPBCMzYSkTIfmls_mIJqsEIjssEheePFEGIpbk3A5dTRxCm86wDEd9_GUCQNFDFHUcxYr8vhdE0ZqZnPzHAvqrn742h0jkhxOSGj3tngmdk29lKC3A5kIUgq5vz6ufwi7SRED6sbPseu4lGdDPwwievrNUsXsIYGRrJY_BAkYhHma5K_hGE26xe2aBrD8OMyC4voApn4pC3fsoxqeYNVMGkzED8T-W3ul6mGlIp96LWyew6hj0Rr2eqpZc3DYI7WK-bYUHjy9TEDmef5VU_V8mhZZ90qMTE6-j92jcw=s0-d-e1-ft#http://url3905.techcreator.io/wf/open?upn=u001.vTSUcvKYFXxkWK2GAzJdRR-2FrOkTjBTH8dkbgQ5H1pne2tT4Gu0kMv2jKVYbJ0PHH9oNi0RarIlwYYuigbutkTxL9RcOP4rOgcTAW3QAea-2BDInb5Vr-2BahJJFqvTHxjEGb9kfvXR-2BGjy-2BfXPy8a6cC8-2Fn0QpEp1sUb-2B9zklW6DT5loU2euAWYKw1YAZz-2B74DdAH5-2BVz2M-2FBX-2FICRd6lfK2wBBElCfHyHpNt3V1d0cQgo8-3D" alt="" width="1" height="1" border="0" style="height:1px!important;width:1px!important;border-width:0!important;margin-top:0!important;margin-bottom:0!important;margin-right:0!important;margin-left:0!important;padding-top:0!important;padding-bottom:0!important;padding-right:0!important;padding-left:0!important">
+    </font></div></td></tr></tbody></table></td></tr></tbody></table></div></div><script type="text/javascript" nonce="">// <![CDATA[
+    };
+    // ]]></script></body></html>
