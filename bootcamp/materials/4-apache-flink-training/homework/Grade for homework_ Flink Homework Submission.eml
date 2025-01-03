@@ -1,0 +1,190 @@
+Delivered-To: bryanbernigen@gmail.com
+Received: by 2002:a05:7010:3d93:b0:421:cdcc:d519 with SMTP id x19csp10157711mdp;
+        Thu, 2 Jan 2025 21:59:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHK6w0CMD+xZZ1THemkI8U0BQbiKX1D3zYZz/+CWwtITF1JPPKzkg2UtM/Hckld0wht0sGl
+X-Received: by 2002:a05:6a00:301a:b0:72a:a7a4:9c6d with SMTP id d2e1a72fcca58-72abdeb6fc1mr78241979b3a.24.1735883970234;
+        Thu, 02 Jan 2025 21:59:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735883970; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ZT0Z6VkAWwqE3Ez2q37sIrA4Z3IlNW8e3WEyN2TjKrUY9DxcSIUdCD5iwkLQfhWa7x
+         S0ULI4bUVW3jOe3YUDbD03moQWaeYOyeZ49Z7mHi9IUvLzY0SOPPFGxviMaasq4a5ljF
+         uIZsNLqR4A3m9oSshyQDt6onNUyQ4viBhpSjCuib36XF1Lfw9iB8uCMd3Xw9bdPbDMJv
+         8XxXWTSjkGJalOTNv05IBPUDDL3MbscXfpJIE7gNoaeefAJh1cxaGov6aN8oq788pao2
+         xkSBAAXDNVm1ytTA2reNSXQhj1TbMz1WT2FRIgNOZ+/pEmoPnSk3E+E9jvEgnGudqstq
+         k3AQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=qDE338lOK+keVM80LZ0IaQSdDafBsjnNLih1zsIXe5Y=;
+        fh=W5Mk6hRClbIdztcOclO4LUOgyuIjpGzLYll23xZWPro=;
+        b=Kqh4MZTi4QKfpOWwx+EX9NudCdC6iqPEOqX+M+5Qz7ZXbHMvXuQ2m0QK3adg1Mii/Z
+         e1WJpeAUTVYodyZxf5MbbizUxhu7c/NAtAbeIn17yECtL3Z7W3Ly0Tf0jLTi/XDERJKY
+         QDSdg33hz76+ZxBsMrPm5WIgJN6uiUDWcNvXDI5eAU8qm7Q3VxXt/boErgVVl/9wijOQ
+         Lv0eoFePsczMVnogA4C2JFrXWvaHvfHC26+aGOqdxwPI28A3HTcm9886+aHcY7x9Msdf
+         FYhgR5vskQQ1Ec4M3XBCxCtnCI9xyfysuRaAgUFWs9kvQjC+S1yiRvu8qZM8adP7tk6M
+         vAEg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@techcreator.io header.s=s1 header.b=npgvLjSB;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=iCHfXioC;
+       spf=pass (google.com: domain of bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io designates 159.183.19.176 as permitted sender) smtp.mailfrom="bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=techcreator.io
+Return-Path: <bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io>
+Received: from wfbtkpbh.outbound-mail.sendgrid.net (wfbtkpbh.outbound-mail.sendgrid.net. [159.183.19.176])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-842f0ae0994si34793624a12.465.2025.01.02.21.59.29
+        for <bryanbernigen@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Jan 2025 21:59:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io designates 159.183.19.176 as permitted sender) client-ip=159.183.19.176;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@techcreator.io header.s=s1 header.b=npgvLjSB;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=iCHfXioC;
+       spf=pass (google.com: domain of bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io designates 159.183.19.176 as permitted sender) smtp.mailfrom="bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=techcreator.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=techcreator.io;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	x-feedback-id:to:cc:content-type:from:subject:to;
+	s=s1; bh=qDE338lOK+keVM80LZ0IaQSdDafBsjnNLih1zsIXe5Y=;
+	b=npgvLjSBon58H0w94K2J2KSySFRhGmSfpBtZ9lgbTWoGh5Zs5/O7lkW0n18DkblN0bDN
+	+yrhQW0xN0do6zdUMuKD35B1W/B8quGH65APVYpo9hwSKJWjQ2Ee078x1WyoCrmdyfRBfl
+	7tHXTtYCvH0XY9Lenmv6qYE3kPsbeXlzMPYG7FtsO/qDfkkl1vhzB1d9FB+6Riyq2pL6U4
+	KhjnpjEKjkfnu19JSZMZ5eRZHB9uvbiQLNlMCgVlP7/8TbZRiODtb7albyaNp5fpYROC/A
+	tAGjbsOj6E12TO0dLrO46IFomB4e/cFFhuOC9AvKowUFMZvAEjUibDcJ7EAbYXgg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	x-feedback-id:to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=qDE338lOK+keVM80LZ0IaQSdDafBsjnNLih1zsIXe5Y=;
+	b=iCHfXioCJKj4fnERWVikwzLjQwwAzhMzGjY3KXdzeevYAlqRFxAn5GY9Y3PtGjaTaF7l
+	Y1BpV82K47aqpcRkTlX5e2aaVoLq8SOpb8/xZDEt6E63IZ02nOfLsVcSUExynFOg+f1vtc
+	6l0xU6Y08X7hHzNtBUv7G+NKs4120cPck=
+Received: by recvd-668fcdfd56-g8zgh with SMTP id recvd-668fcdfd56-g8zgh-1-67777CC0-23
+	2025-01-03 05:59:28.655287521 +0000 UTC m=+4264672.112237394
+Received: from NDgxOTQ4Mzc (unknown)
+	by geopod-ismtpd-3 (SG) with HTTP
+	id Bffa92TZR5mrWPdfvwgS3A
+	Fri, 03 Jan 2025 05:59:28.540 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=us-ascii
+Date: Fri, 03 Jan 2025 05:59:28 +0000 (UTC)
+From: bootcamp@techcreator.io
+Mime-Version: 1.0
+Message-ID: <Bffa92TZR5mrWPdfvwgS3A@geopod-ismtpd-3>
+Subject: Grade for homework: Flink Homework Submission
+X-Feedback-ID: 48194837:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EVhFgviLAlX3CehBLiOE0UX1=2Fs6uwtHvO6yw88TxBA0ZvTN=2FJf=2FUO4fltA?=
+ =?us-ascii?Q?WCNczkb6CxTWFM721jKGSlkry47rCnz9mp4nN8B?=
+ =?us-ascii?Q?RgZsVuJvX=2FGqJIDiGEVO47QHr89a=2FIX9xFdM1Vv?=
+ =?us-ascii?Q?1IoWF=2FuogodkuQEfGjgw5OWLQ7RXrIwaWb8+Ilv?=
+ =?us-ascii?Q?QRVvEwZRfUAJDkVq2pVGAkme0hDVZ9GVdKaN0Cq?=
+ =?us-ascii?Q?g=3D=3D?=
+To: bryanbernigen@gmail.com
+X-Entity-ID: u001.h2eRhmdJJLHvRb2tTALp6Q==
+
+<div>
+                    <h1>FINAL GRADE: A</h1>
+                  <p>** This feedback is auto-generated from an LLM **</p>
+<p>Hello,</p>
+<p>Thank you for submitting your homework. Below is my detailed feedback on=
+ your Flink job submission, the SQL queries, and the solution's alignment w=
+ith the requirements and best practices. </p>
+<h3 id=3D"flinkjobhwpy">Flink Job (<code>hw.py</code>)</h3>
+<ol>
+<li><strong>Sessionization Logic:</strong></li>
+</ol>
+<ul>
+<li>Your Flink job successfully sets up the sessionization using a 5-minute=
+ gap, which aligns with the assignment's requirements. </li>
+<li>The implementation correctly makes use of the <code>SESSION_START(windo=
+w_timestamp, INTERVAL '5' MINUTE)</code> function for sessionizing.</li>
+</ul>
+<ol>
+<li><strong>Code Structure and Readability:</strong></li>
+</ol>
+<ul>
+<li>The structure is generally well-organized, and the code is readable. Or=
+ganizing the code into functions for each task (e.g., creating tables, proc=
+essing events) improves maintainability.</li>
+<li>The use of environment variables for secrets and connection details is =
+good practice, ensuring that sensitive information is not hardcoded.</li>
+</ul>
+<ol>
+<li><strong>UDF Usage:</strong></li>
+</ol>
+<ul>
+<li>Successfully implemented a UDF for geolocation, which adds value to eac=
+h session record. This is a great touch, showcasing additional analytical p=
+otential.</li>
+</ul>
+<ol>
+<li><strong>Improvements:</strong></li>
+</ol>
+<ul>
+<li>Consider adding comments to explain complex sections, such as the SQL q=
+ueries within the Python code. Comments improve clarity and understanding f=
+or others who might read the code later.</li>
+<li>The frequent HTTP requests to the geolocation API in your UDF can lead =
+to performance bottlenecks. Consider caching responses or handling them asy=
+nchronously if scalability becomes a concern.</li>
+<li>Ensure the Kafka setup parameters in your code are configured correctly=
+ in your environment to avoid connection issues.</li>
+</ul>
+<h3 id=3D"sqlscripthw_insightsql">SQL Script (<code>hw_insight.sql</code>)<=
+/h3>
+<ol>
+<li><strong>Queries:</strong></li>
+</ol>
+<ul>
+<li>The SQL queries provide the required insights, including the average nu=
+mber of web events per session and host comparison.</li>
+<li>The queries are clear and execute the requested operations efficiently =
+using group-by clauses.</li>
+</ul>
+<ol>
+<li><strong>Results and Insights:</strong></li>
+</ol>
+<ul>
+<li>The script calculates the average number of web events correctly for th=
+e specified hosts, aligning with the requirements.</li>
+</ul>
+<ol>
+<li><strong>Improvements:</strong></li>
+</ol>
+<ul>
+<li>Your SQL queries calculate averages at the <code>ip, host</code> level,=
+ which is fine initially but may lack direct aggregation at host level firs=
+t. Ensure the question requirements match the query logic.</li>
+<li>Adding comments within SQL files can help elaborate on what each sectio=
+n or query is doing, improving readability and documentation.</li>
+</ul>
+<h3 id=3D"documentationandtestinginstructions">Documentation and Testing In=
+structions</h3>
+<ul>
+<li>You provided SQL queries to analyze the data, but explicit testing inst=
+ructions within your submission would enhance clarity. Including a short RE=
+ADME or comments on how to execute and validate these tasks can ensure easy=
+ verification of your results.</li>
+</ul>
+<h3 id=3D"finalgradeandconstructivefeedback">Final Grade and Constructive F=
+eedback</h3>
+<p>Overall, your submission effectively meets the requirements specified by=
+ the assignment. With minor improvements in documentation and query descrip=
+tions, your work demonstrates a solid understanding of sessionizing events =
+with Flink and relational database querying.</p>
+<pre><code class=3D"json language-json">{
+  "letter_grade": "A",
+  "passes": true
+}
+</code></pre>
+<p>By addressing the noted suggestions, you'll enhance the scalability and =
+documentation quality of your solution. Keep up the great work!</p>
+<p>Best regards.</p>
+                  </div><img src=3D"http://url3905.techcreator.io/wf/open?u=
+pn=3Du001.vTSUcvKYFXxkWK2GAzJdRR-2FrOkTjBTH8dkbgQ5H1pneRp5kuixJBCc-2FlAz4xe=
+E2bV7vemd3CxipO8qXqxFcnRbHhhYk73SDS-2BDvJd7VGPxMi5pOYKLwoiRG-2B9huk2mwGBxRL=
+uTAnGbEI2GuW0gZExPhKqmo4bgCYa2EVfo4ZKvpLYxn-2BXSebNDM9ZwtP0nU47XFac-2F0wnrN=
+y5KXvzJqU-2FT12MnLsYLiAaH99LOf5vPU-3D" alt=3D"" width=3D"1" height=3D"1" bo=
+rder=3D"0" style=3D"height:1px !important;width:1px !important;border-width=
+:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-rig=
+ht:0 !important;margin-left:0 !important;padding-top:0 !important;padding-b=
+ottom:0 !important;padding-right:0 !important;padding-left:0 !important;"/>

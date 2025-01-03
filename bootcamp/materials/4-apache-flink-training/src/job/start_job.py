@@ -58,6 +58,7 @@ def create_processed_events_sink_postgres(t_env):
 
 class GetLocation(ScalarFunction):
   def eval(self, ip_address):
+    print("Getting location for IP: " + ip_address)
     url = "https://api.ip2location.io"
     response = requests.get(url, params={
         'ip': ip_address,
@@ -95,7 +96,8 @@ def create_events_source_kafka(t_env):
             ip VARCHAR,
             headers VARCHAR,
             event_time VARCHAR,
-            event_timestamp AS TO_TIMESTAMP(event_time, '{pattern}')
+            event_timestamp AS TO_TIMESTAMP(event_time, '{pattern}'),
+            WATERMARK FOR event_timestamp AS event_timestamp - INTERVAL '15' SECOND
         ) WITH (
             'connector' = 'kafka',
             'properties.bootstrap.servers' = '{os.environ.get('KAFKA_URL')}',
