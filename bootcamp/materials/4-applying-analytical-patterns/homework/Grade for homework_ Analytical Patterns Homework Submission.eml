@@ -1,0 +1,186 @@
+Delivered-To: bryanbernigen@gmail.com
+Received: by 2002:a05:7010:3d93:b0:421:cdcc:d519 with SMTP id x19csp10076188mdp;
+        Thu, 2 Jan 2025 17:19:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEWEk9eUGl36F8VzyDRUeHuCKQAs02A/Mq64LUp48+fgts72Lfwn/G8h61SBQtsgsdy7Zri
+X-Received: by 2002:a05:6214:2a48:b0:6d8:9124:878e with SMTP id 6a1803df08f44-6dd23320f94mr840982246d6.4.1735867160573;
+        Thu, 02 Jan 2025 17:19:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735867160; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Lx3/pp2wsGA/9vI++ULUX3ZIe0RK0XiSYNInHfPdSSuwGr2sCG74JIZaQHCFx5gWqe
+         Lu5TZK/3y55QxyrgFj1s5VMq9tSgLj3DilDOk/77JXUQR5ocn5ZlGpo9XQKzWvb+dCc4
+         OL5y3rMhF8svzv+Z57C2OCOSPzuNgDWKpGzKHpH9R3QXUAI/WlueVNdcOxjs3xlG6BEL
+         38KZfPa6NsulSLZ2WpKlPWrUKq4JO6bVtg8mj1bP81cWVD5Dw1xq92YNtNnavrmo4m0G
+         H4Ce7ZWR8aR8Rtq3RRy90TSQgRWp1Zn/Bj2Pd+/ks1jP8D9dv1Xt28yGJlXI2EjgyOko
+         4u9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=ksXiEpLlJvKdQ/8dmSTFTQjoWODEU5G70GXrKWQQCOM=;
+        fh=W5Mk6hRClbIdztcOclO4LUOgyuIjpGzLYll23xZWPro=;
+        b=TQZad5TX5QEPOmSiFokEikDn9u2xdtLnF4CKZupvOpUApYf+Fq2aBQ65h4lzRpjrFY
+         F7GoUHaoPs56ctpVgWwYoyFWxcjP/zycXIMP/GzEjNyqZ2c478ggeF1MELiszpQ1XIlq
+         uWFRYlniROHZsB++ZdoI66rLG1rl+V0AtpG+fTFn61UkE4sUuk6t/8JCPe8Fk9JsojwT
+         6alLZ9HC3kHNpv5/TlVS+cXUeDbilwnqrqZfbPnVyJmb+EpEdXgXesigHqexfEgUoEjb
+         tXI2py0/46XnptA1lQhwzWfVKNjfCAjwzKyjwAkFTxgxYB8CoHj0dD0XbCuuLtLudb0w
+         BAVw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@techcreator.io header.s=s1 header.b=k4LiWz2L;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=vnUijiqY;
+       spf=pass (google.com: domain of bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io designates 159.183.19.176 as permitted sender) smtp.mailfrom="bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=techcreator.io
+Return-Path: <bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io>
+Received: from wfbtkpbh.outbound-mail.sendgrid.net (wfbtkpbh.outbound-mail.sendgrid.net. [159.183.19.176])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd182363aesi379526136d6.242.2025.01.02.17.19.20
+        for <bryanbernigen@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Jan 2025 17:19:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io designates 159.183.19.176 as permitted sender) client-ip=159.183.19.176;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@techcreator.io header.s=s1 header.b=k4LiWz2L;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=vnUijiqY;
+       spf=pass (google.com: domain of bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io designates 159.183.19.176 as permitted sender) smtp.mailfrom="bounces+48194837-07ce-bryanbernigen=gmail.com@em7565.techcreator.io";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=techcreator.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=techcreator.io;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	x-feedback-id:to:cc:content-type:from:subject:to;
+	s=s1; bh=ksXiEpLlJvKdQ/8dmSTFTQjoWODEU5G70GXrKWQQCOM=;
+	b=k4LiWz2LuscxB4lv34bR4J5AWZuK0Kyi+bViK4jr2GP+HaolA29KXKbq1OPGjDQpAC7R
+	r8v5D9UHPr42TlIAAdG8e6vyUL7yT593VJ/fyM0d12g2LDGxjf1XStsXH5iQrDRcMA8Wqo
+	vgObjP6x2xiM3CTAiOUZmfKx0B5IwbGu17/OEVnbqFG73l1bwmEXX9Xj+R1r3PQhB0H+8f
+	cl9PDj4SF0HBII56aycdxFc8mDrs7TvYjGSxzfmr85fNTFNHbaRM6cgjvGSJSVoCqNfZ5p
+	u++rkW3kic6imwobfGGNlt7dl2hmcz+RP6EZznwnjFj0A74xKKkfRl0y76qHwKTg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	x-feedback-id:to:cc:content-type:from:subject:to;
+	s=smtpapi; bh=ksXiEpLlJvKdQ/8dmSTFTQjoWODEU5G70GXrKWQQCOM=;
+	b=vnUijiqYp1TmcjtbXjbGi+JKNBRIfDtE4hJB91osG0U3KEZe785wkk2deJi77o0fQKiM
+	lipF0TEoHdP7hBVQ4KwwCcAAN0JKw9pl6TmC6FUEirek4csNJvMs6M8OUJuEp0cpS4cKMb
+	Cu2brjWn1jn+gW3olKYfoLQds0Iez5ha4=
+Received: by recvd-6cffb68cb5-m772q with SMTP id recvd-6cffb68cb5-m772q-1-67773B17-5A
+	2025-01-03 01:19:19.917708241 +0000 UTC m=+4247847.710228069
+Received: from NDgxOTQ4Mzc (unknown)
+	by geopod-ismtpd-16 (SG) with HTTP
+	id l0Y83FUKTRKVnOc3wAU-8w
+	Fri, 03 Jan 2025 01:19:19.904 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Date: Fri, 03 Jan 2025 01:19:19 +0000 (UTC)
+From: bootcamp@techcreator.io
+Mime-Version: 1.0
+Message-ID: <l0Y83FUKTRKVnOc3wAU-8w@geopod-ismtpd-16>
+Subject: Grade for homework: Analytical Patterns Homework Submission
+X-Feedback-ID: 48194837:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EVhFgviLAlX3CehBLiOE0UX1=2Fs6uwtHvO6yw88TxBA0ZQ6S9HKue5jmUlP?=
+ =?us-ascii?Q?RBML8GwANU=2F4gSuj5qPWB7N2M3Rk+73WUKn=2FaHE?=
+ =?us-ascii?Q?7i4JKlu+kX=2FAymMXx+8D4hjQYoSxZJZDlW0VEqk?=
+ =?us-ascii?Q?pqMtGMdDzuBgmM2kqFUY4HI9cwVxMaYTBP3n8gk?=
+ =?us-ascii?Q?jIwIL8kH5LOZGezhwNWPgDK37Avxs0obp0Kckbh?=
+ =?us-ascii?Q?A=3D=3D?=
+To: bryanbernigen@gmail.com
+X-Entity-ID: u001.h2eRhmdJJLHvRb2tTALp6Q==
+
+<div>
+                    <h1>FINAL GRADE: B</h1>
+                  <p>** This feedback is auto-generated from an LLM **</p>
+<p><strong>Feedback for Submission:</strong></p>
+<p>Thank you for your submission. I have reviewed each part of the provided=
+ SQL files. Below are the detailed feedback and suggestions for improvement=
+ based on the homework requirements:</p>
+<h3 id=3D"1playergrowthaccountingfunctionplayer_growth_accountingsql">1. Pl=
+ayer Growth Accounting Function (<code>player_growth_accounting.sql</code>)=
+:</h3>
+<ul>
+<li><strong>Correctness</strong>: The function aims to track players' statu=
+s changes accurately. You=E2=80=99ve used <code>FULL OUTER JOIN</code> to c=
+ombine players from previous and current years, which suits handling all st=
+atus transitions. The usage of <code>COALESCE</code> and array manipulation=
+ is appropriate.</li>
+<li><strong>Edge Cases</strong>: Consider potential edge cases where <code>=
+ty.player_name</code> might be NULL, which you've handled well with <code>C=
+OALESCE</code>. Ensure the input years actually have data, or handle it as =
+exceptions.</li>
+<li><strong>Improvements</strong>: Ensure the consistent handling of player=
+'s active years and status labeling. The logic defined in the <code>CASE</c=
+ode> statement seems accurate given typical state transitions.</li>
+<li><strong>Efficiency</strong>: The procedure should perform efficiently, =
+given that table is updated yearly using the loop.</li>
+</ul>
+<h3 id=3D"2longeststreakofgameswith10pointswindowing2sql">2. Longest Streak=
+ of Games with &gt;10 Points (<code>windowing2.sql</code>):</h3>
+<ul>
+<li><strong>Correctness</strong>: The logic for detecting streaks by identi=
+fying changes in scoring thresholds is clever. You=E2=80=99ve used window f=
+unctions effectively to group games into streaks.</li>
+<li><strong>Clarity</strong>: Ensure comments are added to clarify the purp=
+ose of each <code>CASE</code> statement and transformation, as these could =
+be complex to maintain.</li>
+<li><strong>Output</strong>: The query results should be validated against =
+the actual data to ensure correctness.</li>
+<li><strong>Efficiency</strong>: Consider adding an index on <code>game_dat=
+e_est</code> if performance is slow on large datasets. </li>
+</ul>
+<h3 id=3D"3mostwinsin90gamestretchwindowing1sql">3. Most Wins in 90 Game St=
+retch (<code>windowing1.sql</code>):</h3>
+<ul>
+<li><strong>Correctness</strong>: The window function strategy is correctly=
+ applied for calculating rolling wins over a 90-game stretch. However, the =
+use of <code>ROW_NUMBER()</code> to dedupe teams is not warranted here.</li=
+>
+<li><strong>Clarity & Optimization</strong>: The deduplication should ensur=
+e you=E2=80=99re not joining incorrect data, as your goal is to assess win =
+patterns per team. The <code>ROW_NUMBER()</code> logic here seems unrelated=
+ to the primary goal.</li>
+<li><strong>Efficiency</strong>: Optimization can be achieved by refining t=
+he deduplication process and removing unnecessary joins.</li>
+</ul>
+<h3 id=3D"4groupingsetsaggregationgrouping_setssql">4. Grouping Sets Aggreg=
+ation (<code>grouping_sets.sql</code>):</h3>
+<ul>
+<li><strong>Correctness</strong>: The usage of <code>GROUPING SETS</code> i=
+s well applied to achieve the requested aggregations. You have correctly co=
+mputed points and wins.</li>
+<li><strong>Clarity</strong>: While your structure is mostly readable, cons=
+ider describing each <code>GROUPING SET</code> in comments for future refer=
+ence.</li>
+<li><strong>Validation</strong>: Validate the simplified data with sample c=
+hecks against raw data to confirm aggregated values.</li>
+</ul>
+<h3 id=3D"5ddlsetupddlsql">5. DDL Setup (<code>ddl.sql</code>):</h3>
+<ul>
+<li><strong>Correctness</strong>: The setup for dynamic creation of the cus=
+tom <code>ENUM</code> type and table appears correct.</li>
+<li><strong>Robustness</strong>: Always verify that this logic catches alre=
+ady existing conditions properly before proceeding with creation. This avoi=
+ds unnecessary errors.</li>
+</ul>
+<h3 id=3D"generalsuggestions">General Suggestions:</h3>
+<ul>
+<li>Add comments for complex queries to improve readability and maintainabi=
+lity.</li>
+<li>Make sure to handle and document any potential edge cases, especially w=
+here input data might not meet typical formats or conditions.</li>
+<li>Double-check conditions that might result in a player being marked inco=
+rrectly due to data anomalies or missing data.</li>
+</ul>
+<h3 id=3D"finalgrade">FINAL GRADE:</h3>
+<pre><code class=3D"json language-json">{
+  "letter_grade": "B",
+  "passes": true
+}
+</code></pre>
+<p>Your submission covers the requirements adequately; however, there is ro=
+om for improvement, especially regarding clarity, handling edge cases, and =
+optimization. Given the assignment's complexity, the thorough application o=
+f functions and advanced SQL showcases a solid understanding of database op=
+erations. Keep refining your attention to detail and efficiency.</p>
+                  </div><img src=3D"http://url3905.techcreator.io/wf/open?u=
+pn=3Du001.vTSUcvKYFXxkWK2GAzJdRR-2FrOkTjBTH8dkbgQ5H1pnfcrTxBxYcgX3nWDl2hqHc=
+PmHvqQRRBAu7vzFX7LM-2F0pNIbzHnu9dMzV9wvN2frcuhscNk3varfrVrwhrNfQHWFVfk2-2Fe=
+aJwgVrdr3IEtH2SuKmVfN9yl-2FDsvGkML5s9xpApSRZgBM-2BGHQ-2Bw5iovI03VDbYBcVh0ve=
+3ps0Wsi1iF15K7UD17L0Ay1Gn7gUYBmk-3D" alt=3D"" width=3D"1" height=3D"1" bord=
+er=3D"0" style=3D"height:1px !important;width:1px !important;border-width:0=
+ !important;margin-top:0 !important;margin-bottom:0 !important;margin-right=
+:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bot=
+tom:0 !important;padding-right:0 !important;padding-left:0 !important;"/>
